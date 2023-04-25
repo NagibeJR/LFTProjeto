@@ -1,0 +1,135 @@
+Metadata-Version: 2.1
+Name: pygments-openssl
+Version: 1.5
+Summary: Syntax coloring for OpenSSL configuration files
+Home-page: https://github.com/stefanholek/pygments-openssl
+Author: Stefan H. Holek
+Author-email: stefan@epy.co.at
+License: BSD-2-Clause
+Keywords: sphinx,pygments,lexer,openssl,openssl.cnf,openssl.conf,syntax,coloring,colors,highlight
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Text Processing :: Filters
+Requires-Python: !=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: setuptools
+Requires-Dist: pygments
+
+================
+pygments-openssl
+================
+------------------------------------------------
+Syntax coloring for OpenSSL configuration files
+------------------------------------------------
+
+Overview
+========
+
+This package provides a Pygments_ lexer for OpenSSL_ configuration files.
+The lexer is published as an entry point and Pygments will pick it up
+automatically.
+
+You can use the ``openssl`` language with Pygments::
+
+    $ pygmentize -l openssl /etc/openssl/openssl.cnf
+
+In Sphinx_ documents the lexer is selected with the ``highlight`` directive::
+
+    .. highlight:: openssl
+
+.. _OpenSSL: https://www.openssl.org/docs/manmaster/man5/config.html
+.. _Pygments: https://pygments.org/
+.. _Sphinx: https://sphinx-doc.org/
+
+Installation
+============
+
+Use your favorite installer to install pygments-openssl into the same
+Python environment you have installed Pygments. For example::
+
+    $ pip install pygments-openssl
+
+To verify the installation run::
+
+    $ pygmentize -L lexer | grep -i openssl
+    * openssl:
+        OpenSSL (filenames *.cnf, *.conf)
+
+
+Changelog
+=========
+
+1.5 - 2022-02-27
+----------------
+
+* Add Python 3.8-3.10 to tox.ini. Remove old Python versions.
+  [stefan]
+
+* Replace deprecated ``python setup.py test`` in tox.ini.
+  [stefan]
+
+* Remove deprecated ``test_suite`` from setup.py.
+  [stefan]
+
+* Move lexer into ``pygments_openssl`` namespace.
+  [stefan]
+
+* Move metadata to setup.cfg and add a pyproject.toml file.
+  [stefan]
+
+* Include tests in sdist but not in wheel.
+  [stefan]
+
+* Support new ``.pragma`` and ``.include`` directives.
+  [stefan]
+
+* Pygments 2.11 whitespace token modernization.
+  [stefan]
+
+1.4 - 2019-01-25
+----------------
+
+* Add MANIFEST.in.
+  [stefan]
+
+* Release as wheel.
+  [stefan]
+
+1.3 - 2017-02-05
+----------------
+
+* Add a LICENSE file.
+  [stefan]
+
+* Add a test suite and fix two minor whitespace lexing issues.
+  [stefan]
+
+1.2 - 2013-11-21
+----------------
+
+* Update documentation.
+  [stefan]
+
+1.1 - 2012-10-12
+----------------
+
+* Detect and color line continuations.
+  [stefan]
+
+1.0 - 2012-10-10
+----------------
+
+* Initial release.
+  [stefan]
+
+
