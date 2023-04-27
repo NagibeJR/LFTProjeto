@@ -192,23 +192,8 @@ def p_error(p):
         print("Erro de sintaxe: fim inesperado do arquivo")
 
 data2 = '''
-function some (a, b){ 
-    a = 88 + 44; 
-    b = 70; 
-    sumparabola(1, 2, 3); 
-    if (b==70){     
-        while (true){ 
-            c = 38; 
-            sumparabola(5, true, false); 
-            while (c){ 
-                sumparabola(5, true, true); 
-            } 
-        }
-    } 
-    soma(); 
-    sumparabolac(2); 
-    return true; 
-}
+let message: string = 'Hello, World!';
+console.log(message);
 '''
 lexer = lex.lex()
 lexer.input(data2)
