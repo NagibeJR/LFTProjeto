@@ -51,7 +51,6 @@ reserved = {
 'never': 'NEVER',
 'new': 'NEW',
 'null': 'NULL',
-'number': 'NUMBER',
 'object': 'OBJECT',
 'package': 'PACKAGE',
 'private': 'PRIVATE',
@@ -62,7 +61,6 @@ reserved = {
 'return': 'RETURN',
 'set': 'SET',
 'static': 'STATIC',
-'string': 'STRING',
 'super': 'SUPER',
 'switch': 'SWITCH',
 'symbol': 'SYMBOL',
@@ -110,20 +108,6 @@ tokens = [
     'AND',
     'OR',
     'NOT',
-    'IF',
-    'ELSE',
-    'WHILE',
-    'FOR',
-    'FUNCTION',
-    'CLASS',
-    'INTERFACE',
-    'EXTENDS',
-    'IMPLEMENTS',
-    'PUBLIC',
-    'PRIVATE',
-    'STATIC',
-    'VOID',
-    'BOOLEAN',
 ] + list (reserved.values())
 
 t_PLUS = r'\+'
@@ -151,20 +135,7 @@ t_GE = r'>='
 t_AND = r'&&'
 t_OR = r'\|\|'
 t_NOT = r'!'
-t_IF = r'if'
-t_ELSE = r'else'
-t_WHILE = r'while'
-t_FOR = r'for'
-t_FUNCTION = r'function'
-t_CLASS = r'class'
-t_INTERFACE = r'interface'
-t_EXTENDS = r'extends'
-t_IMPLEMENTS = r'implements'
-t_PUBLIC = r'public'
-t_PRIVATE = r'private'
-t_STATIC = r'static'
-t_VOID = r'void'
-t_BOOLEAN = r'boolean'
+
 
 # Regra para identificadores
 def t_IDENTIFIER(t):
