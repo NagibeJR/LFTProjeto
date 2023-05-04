@@ -30,16 +30,17 @@ from ExpressionLanguageLex import *
 # Regras da liguagem
 precedence = (
     ('left', 'COMMA'),
-    ('right', 'ASSIGN',),
+    ('right', 'ASSIGN', 'INCREMENTN', 'DECREMENTN', 'TIMESINCREMENT', 'DIVIDEINCREMENT', 'MODINCREMENT'),
+    ('right', 'INTER', 'COLON'),
     ('left', 'OR'),
     ('left', 'AND'),
-    ('left', 'EQ', 'NEQ', ),
+    ('left', 'EQ', 'NEQ', 'EEQ', 'NNEQ'),
     ('left', 'LT', 'LE', 'GT', 'GE', 'IN', 'INSTANCEOF'),
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE', 'MOD'),
-    ('right', 'NOT'),
-    ('left', 'LPAREN','RPAREN')
-    
+    ('right', 'EXPO'),
+    ('right', 'DECREMENT', 'INCREMENT', 'NOT'),
+    ('left', 'LPAREN','RPAREN') 
 )
 
 # Regras da linguagem
@@ -50,6 +51,12 @@ def p_programa(p):
              | vardecl SEMICOLON
              | vardecl SEMICOLON programa
     '''
+    if(len(p) == 4):
+        p[0] = p[1] + p[2] + p[3]
+    elif(len(p) == 3):
+        p[0] = p[1] + p[2]
+    else:
+        p[0] = p[1]
 
 def p_funcdecl(p):
     '''
@@ -59,12 +66,11 @@ def p_funcdecl(p):
 def p_vardecl(p):
     '''vardecl : tipodecl ID COLON tipo
                | tipodecl ID COLON tipo ASSIGN expressao
-               | tipodecl ID COLON tipo ASSIGN ID
                | tipodecl ID COLON tipo LBRACKET RBRACKET ASSIGN LBRACKET RBRACKET
                | tipodecl ID COLON tipo LBRACKET RBRACKET ASSIGN LBRACKET listexp RBRACKET
                | tipodecl ID COLON tipo LPAREN tipo RBRACKET ASSIGN LBRACKET listexp RBRACKET
     '''
-
+  
 def p_signature(p):
     '''signature : tipofunc ID LPAREN funcparametros RPAREN COLON tipo body
                  | tipofunc ID LPAREN funcparametros RPAREN COLON tipo SEMICOLON
@@ -94,8 +100,8 @@ def p_comando(p):
                | expressao SEMICOLON
                | WHILE LPAREN expressao RPAREN bodyorcomando
                | RETURN expressao SEMICOLON
+               | IF LPAREN expressao RPAREN bodyorcomando 
                | IF LPAREN expressao RPAREN bodyorcomando ELSE bodyorcomando
-               | IF LPAREN expressao RPAREN bodyorcomando
                | FOR LPAREN opexp SEMICOLON opexp SEMICOLON opexp RPAREN bodyorcomando
     '''
 
@@ -108,6 +114,7 @@ def p_bodyorcomando(p):
     '''bodyorcomando : body
                      | comando
     '''
+
 
 def p_expressao(p):
     '''expressao : expressao PLUS expressao
@@ -123,6 +130,17 @@ def p_expressao(p):
                  | expressao GT expressao
                  | expressao LE expressao
                  | expressao GE expressao
+                 | expressao INCREMENT 
+                 | expressao EXPO expressao 
+                 | expressao DECREMENT
+                 | expressao INCREMENTN expressao
+                 | expressao DECREMENTN expressao
+                 | expressao TIMESINCREMENT expressao
+                 | expressao DIVIDEINCREMENT expressao
+                 | expressao MODINCREMENT expressao
+                 | expressao EEQ expressao
+                 | expressao NNEQ expressao
+                 | expressao INTER expressao COLON expressao 
                  | NINT
                  | NFLOAT
                  | string
@@ -150,7 +168,7 @@ def p_assign(p):
 def p_tipodecl(p):
     '''tipodecl : LET
                 | VAR
-                | CONST
+                | CONST tipo
     '''
 
 def p_tipo(p):
@@ -160,8 +178,8 @@ def p_tipo(p):
     '''
 
 def p_listexp(p):
-    '''listexp : expressao COMMA listexp
-               | expressao
+    '''listexp : expressao 
+               | expressao COMMA listexp
     '''
 
 def p_string(p):

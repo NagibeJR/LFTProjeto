@@ -96,6 +96,14 @@ tokens = [
     'TIMES',
     'DIVIDE',
     'MOD',
+    'INCREMENT',
+    'EXPO',
+    'INCREMENTN',
+    'DECREMENT',
+    'DECREMENTN',
+    'TIMESINCREMENT',
+    'DIVIDEINCREMENT',
+    'MODINCREMENT',
     'LPAREN',
     'RPAREN',
     'LBRACKET',
@@ -105,10 +113,13 @@ tokens = [
     'COMMA',
     'SEMICOLON',
     'COLON',
+    'INTER',
     'DOT',
     'ASSIGN',
     'EQ',
+    'EEQ',
     'NEQ',
+    'NNEQ',
     'LT',
     'LE',
     'GT',
@@ -120,37 +131,49 @@ tokens = [
     'COMMENT',
     'OCTAL',
     'HEXADECIMAL',
-    'ASPASSIMPLES',
-    'ASPASDUPLAS',
+    'SQUOTE',
+    'DQUOTE',
 ] + list (reserved.values())
+
 
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_MOD = r'%'
+t_INCREMENT = r'\+\+'
+t_EXPO = r'\*\*'
+t_DECREMENT = r'--'
+t_ASSIGN = r'='
+t_INCREMENTN = r'\+='
+t_DECREMENTN = r'-='
+t_TIMESINCREMENT = r'\*='
+t_DIVIDEINCREMENT = r'/='
+t_MODINCREMENT = r'%='
+t_EQ = r'=='
+t_EEQ = r'==='
+t_NEQ = r'!='
+t_NNEQ = r'!=='
+t_GT = r'>'
+t_LT = r'<'
+t_GE = r'>='
+t_LE = r'<='
+t_AND = r'&&'
+t_OR = r'\|\|'
+t_NOT = r'!'
+t_INTER = r'\?'
+t_COLON = r':'
+t_LBRACE = r'\{'
+t_RBRACE = r'\}'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_LBRACKET = '\['
 t_RBRACKET = '\]'
-t_LBRACE = r'{'
-t_RBRACE = r'}'
-t_COMMA = r','
 t_SEMICOLON = r';'
-t_COLON = r':'
+t_COMMA = r','
 t_DOT = r'\.'
-t_ASSIGN = r'='
-t_EQ = r'=='
-t_NEQ = r'!='
-t_LT = r'<'
-t_LE = r'<='
-t_GT = r'>'
-t_GE = r'>='
-t_AND = r'&&'
-t_OR = r'\|\|'
-t_NOT = r'!'
-t_ASPASSIMPLES = r'\''
-t_ASPASDUPLAS = r'\"'
+t_DQUOTE = r'\"'
+t_SQUOTE = r'\''
 
 
 # Regra para identificadores
@@ -225,3 +248,5 @@ def t_NULL(t):
 def t_BRANCO(t):
     r'[\t ]+'
     pass
+
+lexer = lex.lex()
