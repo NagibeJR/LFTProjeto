@@ -2,6 +2,42 @@ from abc import abstractmethod
 from abc import ABCMeta
 
 # Classe abstrata
+#programa
+class programa(metaclass=ABCMeta):
+    @abstractmethod
+    def accept(self, visitor):
+        pass
+
+class ProgramaFuncDecl(programa):
+    def __init__(self, funcdecl):
+        self.funcdecl = funcdecl
+
+    def accept(self, visitor):
+        return visitor.visitProgramaFuncDecl(self)
+    
+class programaFuncDeclPrograma(programa):
+    def __init__(self, funcdecl, program):
+        self.funcdecl = funcdecl
+        self.program = program
+
+    def accept(self, visitor):
+        return visitor.visitProgramaFuncDeclPrograma(self)
+    
+class programaVarDecl(programa):
+    def __init__(self, vardecl):
+        self.vardecl = vardecl
+
+    def accept(self, visitor):
+        return visitor.visitProgramaVarDecl(self)
+    
+class programaVarDeclPrograma(programa):
+    def __init__(self, vardecl, program):
+        self.vardecl = vardecl
+        self.program = program
+
+    def accept(self, visitor):
+        return visitor.visitProgramaVarDeclPrograma(self)
+      
 #declaracao de variaveis
 
 class varDecl(metaclass=ABCMeta):
@@ -362,9 +398,8 @@ class ExpressaoNotEqual(expressao):
         return visitor.visitExpressaoNotEqual(self)
     
 class ExpressaoAssign(expressao):    
-    def __init__(self, id, expressao):
-        self.id = id
-        self.expressao = expressao
+    def __init__(self, assign):
+        self.assign = assign
     
     def accept(self, visitor):
         return visitor.visitExpressaoAssign(self)
@@ -389,6 +424,112 @@ class EspressaoBool (expressao):
     
     def accept(self, visitor):
         return visitor.visitExpressaoBool(self)
+
+class ExpressaoIncrement(expressao):
+    def __init__(self, expressao):
+        self.expressao = expressao
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoIncrement(self)
+    
+class ExpressaoDecrement(expressao):
+    def __init__(self, expressao):
+        self.expressao = expressao
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoDecrement(self)
+    
+class ExpressaoExpo(expressao):
+    def __init__(self, expressao, expressao2):
+        self.expressao = expressao
+        self.expressao2 = expressao
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoExpo(self)
+    
+class ExpressaoIncrementn(expressao):
+    def __init__(self, expressao, expressao2):
+        self.expressao = expressao
+        self.expressao2 = expressao2
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoIncrementn(self)
+    
+class ExpressaoDecrementn(expressao):
+    def __init__(self, expressao, expressao2):
+        self.expressao = expressao
+        self.expressao = expressao2
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoDecrementn(self)
+    
+class ExpressaoMultincrement(expressao):
+    def __init__(self, expressao, expressao2):
+        self.expressao = expressao
+        self.expressao2 = expressao2
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoMultincrement(self)
+    
+class ExpressaoDivideincrement(expressao):
+    def __init__(self, expressao, expressao2):
+        self.expressao = expressao
+        self.expressao2 = expressao2
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoDivideincrement(self)
+
+class ExpressaoModincrement(expressao):
+    def __init__(self, expressao, expressao2):
+        self.expressao = expressao
+        self.expressao2 = expressao2
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoModincrement(self)
+  
+class ExpressaoEEQ(expressao):
+    def __init__(self, expressao, expressao2):
+        self.expressao = expressao
+        self.expressao2 = expressao2
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoEEQ(self)
+ 
+class ExpressaoNNEQ(expressao):
+    def __init__(self, expressao, expressao2):
+        self.expressao = expressao
+        self.expressao2 = expressao2
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoNNEQ(self)
+ 
+class ExpressaoNOT(expressao):
+    def __init__(self, expressao):
+        self.exp = expressao
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoNOT(self)
+    
+class ExpressaoFIM(expressao):
+    def __init__(self, expressao, expressao2, expressao3):
+        self.expressao = expressao
+        self.expressao2 = expressao2
+        self.expressao3 = expressao2
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoFIM(self)
+
+class Opexp(metaclass=ABCMeta):
+    @abstractmethod
+    def accept(self, visitor):
+        pass
+
+class ExpOpexp(Opexp):
+    def __init__(self, exp):
+        self.exp = exp
+
+    def accept(self, visitor):
+        return visitor.visitExpOpexp(self)
     
 #Call
 class Call(metaclass=ABCMeta):
@@ -452,3 +593,48 @@ class NoAssign(Assign):
 
     def accept(self, visitor):
         return visitor.visitNoAssign(self)
+
+class tipoDecl(metaclass=ABCMeta):
+    @abstractmethod
+    def accept(self, visitor):
+        pass
+
+class tipodecl(tipoDecl):
+    def __init__(self, tipo):
+        self.tipo = tipo
+
+    def accept(self, visitor):
+        return visitor.visittipodecl(self)
+
+class tipodecltipo(tipoDecl):
+    def __init__(self, tipo, tipo2):
+        self.tipo = tipo
+        self.tipo2 = tipo2
+
+    def accept(self, visitor):
+        return visitor.visittipodecltipo(self)
+    
+class String (metaclass=ABCMeta):
+    @abstractmethod
+    def accept(self, visitor):
+        pass
+
+class String(String):
+    def __init__(self, string):
+        self.string = string
+
+    def accept(self, visitor):
+        return visitor.visitstring(self)
+
+class Tipo (metaclass=ABCMeta):
+    @abstractmethod
+    def accept(self, visitor):
+        pass
+
+class tipo(Tipo):
+    def __init__(self, tipo):
+        self.tipo = tipo
+
+    def accept(self, visitor):
+        return visitor.visittipo(self)
+

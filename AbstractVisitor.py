@@ -1,6 +1,5 @@
 
-from abc import abstractmethod
-from abc import ABCMeta
+from abc import abstractmethod, ABCMeta
 
 class AbstractVisitor(metaclass=ABCMeta):
 #declaracao de variaveis
@@ -127,6 +126,10 @@ class AbstractVisitor(metaclass=ABCMeta):
         pass
 
     @abstractmethod
+    def visitExpressaoID(self, ExpressaoID):
+        pass  
+
+    @abstractmethod
     def visitExpressaoInt(self, ExpressaoInt):
         pass
 
@@ -138,6 +141,10 @@ class AbstractVisitor(metaclass=ABCMeta):
     def visitExpressaoString(self, ExpressaoString):
         pass
 
+    @abstractmethod
+    def visitExpressaoPlus(self, ExpressaoPlus):
+        pass
+      
     @abstractmethod
     def visitExpressaoMinus(self, ExpressaoMinus):
         pass
@@ -187,6 +194,10 @@ class AbstractVisitor(metaclass=ABCMeta):
         pass
 
     @abstractmethod
+    def visitExpressaoAssign(self, ExpressaoAssign):
+        pass
+  
+    @abstractmethod
     def visitExpressaoCall(self, ExpressaoCall):
         pass
 
@@ -196,6 +207,58 @@ class AbstractVisitor(metaclass=ABCMeta):
 
     @abstractmethod
     def visitExpressaoBool(self, EspressaoBool):
+        pass
+
+    @abstractmethod
+    def visitExpressaoIncrement(self, ExpressaoIncrement):
+        pass
+
+    @abstractmethod
+    def visitExpressaoDecrement(self, ExpressaoDecrement):
+        pass
+
+    @abstractmethod
+    def visitExpressaoExpo(self, ExpressaoExpo):
+        pass
+
+    @abstractmethod
+    def visitExpressaoIncrementn(self, ExpressaoIncrementn):
+        pass
+
+    @abstractmethod
+    def visitExpressaoDecrementn(self, ExpressaoDecrementn):
+        pass
+
+    @abstractmethod
+    def visitExpressaoMultincrement(self, ExpressaoMultincrement):
+        pass
+
+    @abstractmethod
+    def visitExpressaoDivideincrement(self, ExpressaoDivideincrement):
+        pass
+
+    @abstractmethod
+    def visitExpressaoModincrement(self, ExpressaoModincrement):
+        pass
+
+    @abstractmethod
+    def visitExpressaoEEQ(self, ExpressaoEEQ):
+        pass
+
+    @abstractmethod
+    def visitExpressaoNNEQ(self, ExpressaoNNEQ):
+        pass
+
+    @abstractmethod
+    def visitExpressaoNOT(self, ExpressaoNOT):
+        pass
+
+    @abstractmethod
+    def visitExpressaoFIM(self, ExpressaoFIM):
+        pass
+
+    @abstractmethod
+    def visitExpOpexp(self, ExpOpexp):
         pass
 
 #Call
@@ -232,3 +295,20 @@ class AbstractVisitor(metaclass=ABCMeta):
     @abstractmethod
     def visitNoAssign(self, NoAssign):
         pass
+
+    @abstractmethod
+    def visittipodecl(self, tipodecl):
+        pass
+
+    @abstractmethod
+    def visittipodecltipo(self, tipodecltipo):
+        pass
+
+    @abstractmethod
+    def visitstring(self, String):
+        pass
+
+    @abstractmethod
+    def visittipo(self, Tipo):
+        pass
+
