@@ -11,3 +11,7 @@ def blank():
     return p
 
 class Visitor(AbstractVisitor):
+
+    def visitVarDeclID (self, varDeclID):
+        varDeclID.id.accept(self)
+        print(blank() + 'var ' + varDeclID.id + ';')
