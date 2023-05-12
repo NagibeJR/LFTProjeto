@@ -3,6 +3,23 @@ from abc import abstractmethod, ABCMeta
 
 class AbstractVisitor(metaclass=ABCMeta):
 #declaracao de variaveis
+
+    @abstractmethod
+    def visitProgramaFuncDecl(self, programa):
+        pass
+
+    @abstractmethod
+    def visitProgramaVarDecl(self, programa):
+        pass
+
+    @abstractmethod
+    def visitProgramaFuncDeclProgram(self, programa):
+        pass
+
+    @abstractmethod
+    def visitProgramaVarDeclProgram(self, programa):
+        pass
+
     @abstractmethod
     def visitVarDecl(self, varDecl):
         pass

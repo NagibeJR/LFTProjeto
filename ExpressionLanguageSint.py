@@ -49,15 +49,15 @@ def p_programa(p):
     '''programa : funcdecl'''
     p[0] = p[1]
 
-def p_program1(p):
+def p_programaFuncDeclPrograma(p):
     '''programa : funcdecl programa'''
     p[0] = sa.programaFuncDeclPrograma(p[1], p[2])
 
-def p_program2(p):
+def p_programaVarDecl(p):
     '''programa : vardecl SEMICOLON'''
     p[0] = sa.programaVarDecl(p[1])
 
-def p_program3(p):
+def p_programaVarDeclPrograma(p):
     '''programa : vardecl SEMICOLON programa'''
     p[0] = sa.programaVarDeclPrograma(p[1], p[3])
 

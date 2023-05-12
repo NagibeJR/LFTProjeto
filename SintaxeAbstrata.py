@@ -16,9 +16,9 @@ class ProgramaFuncDecl(programa):
         return visitor.visitProgramaFuncDecl(self)
     
 class programaFuncDeclPrograma(programa):
-    def __init__(self, funcdecl, program):
+    def __init__(self, funcdecl, programa):
         self.funcdecl = funcdecl
-        self.program = program
+        self.programa = programa
 
     def accept(self, visitor):
         return visitor.visitProgramaFuncDeclPrograma(self)
@@ -31,9 +31,9 @@ class programaVarDecl(programa):
         return visitor.visitProgramaVarDecl(self)
     
 class programaVarDeclPrograma(programa):
-    def __init__(self, vardecl, program):
+    def __init__(self, vardecl, programa):
         self.vardecl = vardecl
-        self.program = program
+        self.programa = programa
 
     def accept(self, visitor):
         return visitor.visitProgramaVarDeclPrograma(self)
@@ -458,7 +458,7 @@ class ExpressaoIncrementn(expressao):
 class ExpressaoDecrementn(expressao):
     def __init__(self, expressao, expressao2):
         self.expressao = expressao
-        self.expressao = expressao2
+        self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoDecrementn(self)
@@ -505,7 +505,7 @@ class ExpressaoNNEQ(expressao):
  
 class ExpressaoNOT(expressao):
     def __init__(self, expressao):
-        self.exp = expressao
+        self.expressao = expressao
 
     def accept(self, visitor):
         return visitor.visitExpressaoNOT(self)
@@ -525,8 +525,8 @@ class Opexp(metaclass=ABCMeta):
         pass
 
 class ExpOpexp(Opexp):
-    def __init__(self, exp):
-        self.exp = exp
+    def __init__(self, expressao):
+        self.expressao = expressao
 
     def accept(self, visitor):
         return visitor.visitExpOpexp(self)
