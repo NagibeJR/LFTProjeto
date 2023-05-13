@@ -241,17 +241,17 @@ class ComandoIf (Comando):
         return visitor.visitComandoIf(self)
     
 class ComandoIfElse (Comando):
-    def __init__(self, expressao, bodyorcomando, bodyorcomando2):
+    def __init__(self, expressao, bodyorcomando1, bodyorcomando2):
         self.expressao = expressao
-        self.bodyorcomando = bodyorcomando
+        self.bodyorcomando1 = bodyorcomando1
         self.bodyorcomando2 = bodyorcomando2
 
     def accept(self, visitor):
         return visitor.visitComandoIfElse(self)
     
 class ComandoFor (Comando):
-    def __init__(self, expressao, expressao2, expressao3, bodyorcomando):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2, expressao3, bodyorcomando):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
         self.expressao3 = expressao3
         self.bodyorcomando = bodyorcomando
@@ -294,104 +294,104 @@ class ExpressaoString(expressao):
         return visitor.visitExpressaoString(self)
     
 class ExpressaoPlus(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoPlus(self)
     
 class ExpressaoMinus(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoMinus(self)
     
 class ExpressaoMult(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoMult(self)
     
 class ExpressaoDiv(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoDiv(self)
     
 class ExpressaoMod(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoMod(self)
     
 class ExpressaoAnd(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoAnd(self)
     
 class ExpressaoOr(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoOr(self)
     
 class ExpressaoGreater(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
     
     def accept(self, visitor):
         return visitor.visitExpressaoGreater(self)
     
 class ExpressaoLess(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
     
     def accept(self, visitor):
         return visitor.visitExpressaoLess(self)
     
 class ExpressaoGreaterEqual(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
     
     def accept(self, visitor):
         return visitor.visitExpressaoGreaterEqual(self)
     
 class ExpressaoLessEqual(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
     
     def accept(self, visitor):
         return visitor.visitExpressaoLessEqual(self)
     
 class ExpressaoEqual(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
     
     def accept(self, visitor):
         return visitor.visitExpressaoEqual(self)
     
 class ExpressaoNotEqual(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
     
     def accept(self, visitor):
@@ -440,64 +440,64 @@ class ExpressaoDecrement(expressao):
         return visitor.visitExpressaoDecrement(self)
     
 class ExpressaoExpo(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao
 
     def accept(self, visitor):
         return visitor.visitExpressaoExpo(self)
     
 class ExpressaoIncrementn(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoIncrementn(self)
     
 class ExpressaoDecrementn(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoDecrementn(self)
     
 class ExpressaoMultincrement(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoMultincrement(self)
     
 class ExpressaoDivideincrement(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoDivideincrement(self)
 
 class ExpressaoModincrement(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoModincrement(self)
   
 class ExpressaoEEQ(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
         return visitor.visitExpressaoEEQ(self)
  
 class ExpressaoNNEQ(expressao):
-    def __init__(self, expressao, expressao2):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
 
     def accept(self, visitor):
@@ -511,8 +511,8 @@ class ExpressaoNOT(expressao):
         return visitor.visitExpressaoNOT(self)
     
 class ExpressaoFIM(expressao):
-    def __init__(self, expressao, expressao2, expressao3):
-        self.expressao = expressao
+    def __init__(self, expressao1, expressao2, expressao3):
+        self.expressao1 = expressao1
         self.expressao2 = expressao2
         self.expressao3 = expressao2
 
@@ -530,6 +530,33 @@ class ExpOpexp(Opexp):
 
     def accept(self, visitor):
         return visitor.visitExpOpexp(self)
+
+class ExpVarDecl(expressao):
+    def __init__(self, varDecl):
+        self.varDecl = varDecl
+
+    def accept(self, visitor):
+        return visitor.visitExpVardecl(self)
+
+class Listexp(metaclass=ABCMeta):
+    @abstractmethod
+    def accept(self, visitor):
+        pass
+
+class SingleListexp(Listexp):
+    def __init__(self, expressao):
+        self.expressao = expressao
+
+    def accept(self, visitor):
+        return visitor.visitSingleListexp(self)
+    
+class CompoundListexp(Listexp):
+    def __init__(self, expressao, listexp):
+        self.expressao = expressao
+        self.listexp = listexp
+
+    def accept(self, visitor):
+        return visitor.visitCompoundListexp(self)
     
 #Call
 class Call(metaclass=ABCMeta):

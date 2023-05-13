@@ -47,7 +47,7 @@ precedence = (
 # Regras da linguagem
 def p_programa(p):
     '''programa : funcdecl'''
-    p[0] = p[1]
+    p[0] = sa.ProgramaFuncDecl(p[1])
 
 def p_programaFuncDeclPrograma(p):
     '''programa : funcdecl programa'''
@@ -294,6 +294,10 @@ def p_expressaoBOOLEAN(p):
 def p_expressaoNOT(p):
     '''expressao : NOT expressao'''
     p[0] = sa.ExpressaoNOT(p[2])
+
+def p_expressaoVardecl(p):
+    '''expressao : vardecl'''
+    p[0] = sa.ExpVarDecl(p[1])
 
 def p_call(p): 
     '''call : ID LPAREN parametros RPAREN

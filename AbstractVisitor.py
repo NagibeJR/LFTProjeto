@@ -1,4 +1,3 @@
-
 from abc import abstractmethod, ABCMeta
 
 class AbstractVisitor(metaclass=ABCMeta):
