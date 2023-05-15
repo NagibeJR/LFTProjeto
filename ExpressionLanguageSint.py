@@ -21,7 +21,6 @@
 ##listexp -> expressao , listexp | expressao
 ##string -> STRINGD | STRINGS
 
-
 # Definição das regras de produção
 import ply.lex as lex
 import ply.yacc as yacc
@@ -64,6 +63,7 @@ def p_programaVarDeclPrograma(p):
 def p_vardecl(p):
     '''vardecl : tipodecl ID COLON tipo'''
     p[0] = sa.varDeclID(p[1], p[2])
+  
 def p_vardecl2(p):
     '''vardecl : tipodecl ID COLON tipo ASSIGN expressao'''
     p[0] = sa.varDeclIDAssign(p[1], p[2], p[6])
@@ -77,8 +77,8 @@ def p_vardecl4(p):
   p[0] = sa.varDeclIDAssignList(p[1], p[2], p[9])
 
 def p_vardecl5(p):
-  '''vardecl : tipodecl ID COLON tipo LPAREN tipo RBRACKET ASSIGN LBRACKET listexp RBRACKET'''
-  p[0] = sa.varDeclIDAssignListID(p[1], p[2], p[10], None)
+  '''vardecl : tipodecl ID COLON LPAREN tipo BAR tipo RPAREN RBRACKET LBRACKET RBRACKET ASSIGN LBRACKET listexp RBRACKET'''
+  p[0] = sa.varDeclIDAssignListTIPO(p[1], p[2], p[5], p[7], p[14])
                                         
 def p_funcdecl(p):
     '''funcdecl : signature body'''
@@ -294,10 +294,6 @@ def p_expressaoBOOLEAN(p):
 def p_expressaoNOT(p):
     '''expressao : NOT expressao'''
     p[0] = sa.ExpressaoNOT(p[2])
-
-def p_expressaoVardecl(p):
-    '''expressao : vardecl'''
-    p[0] = sa.ExpVarDecl(p[1])
 
 def p_call(p): 
     '''call : ID LPAREN parametros RPAREN

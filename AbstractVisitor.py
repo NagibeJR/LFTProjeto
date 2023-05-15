@@ -39,7 +39,7 @@ class AbstractVisitor(metaclass=ABCMeta):
         pass 
 
     @abstractmethod
-    def visitVarDeclIDAssignListID(self, varDeclIDAssignListID):
+    def visitVarDeclIDAssignListTIPO(self, varDeclIDAssignListTIPO):
         pass 
 
 #declaracao de funcoes

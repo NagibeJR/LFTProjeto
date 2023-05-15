@@ -1,5 +1,4 @@
 import ply.lex as lex
-
 #lista global criada para armazenar os retornos do algoritmo
 
 #linguagem léxica de TypeScript
@@ -133,6 +132,7 @@ tokens = [
     'HEXADECIMAL',
     'SQUOTE',
     'DQUOTE',
+    'BAR',
 ] + list (reserved.values())
 
 
@@ -174,6 +174,7 @@ t_COMMA = r','
 t_DOT = r'\.'
 t_DQUOTE = r'\"'
 t_SQUOTE = r'\''
+t_BAR = r'\|'
 
 
 # Regra para identificadores

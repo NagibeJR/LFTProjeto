@@ -80,15 +80,16 @@ class varDeclIDAssignList(varDecl):
     def accept(self, visitor):
         return visitor.visitVarDeclIDAssignList(self)
     
-class varDeclIDAssignListID(varDecl):
-    def __init__(self, tipo, id, listexp, id2):
-        self.tipo = tipo
+class varDeclIDAssignListTIPO(varDecl):
+    def __init__(self, tipodecl, id, tipo1, tipo2, listexp):
+        self.tipodecl = tipodecl
         self.id = id
+        self.tipo1 = tipo1
+        self.tipo2 = tipo2
         self.listexp = listexp
-        self.id2 = id2
 
     def accept(self, visitor):
-        return visitor.visitVarDeclIDAssignListID(self)
+        return visitor.visitVarDeclIDAssignLisTIPO(self)
     
 #declaracao de funcoes
 class funcDecl(metaclass=ABCMeta):
@@ -530,13 +531,6 @@ class ExpOpexp(Opexp):
 
     def accept(self, visitor):
         return visitor.visitExpOpexp(self)
-
-class ExpVarDecl(expressao):
-    def __init__(self, varDecl):
-        self.varDecl = varDecl
-
-    def accept(self, visitor):
-        return visitor.visitExpVardecl(self)
 
 class Listexp(metaclass=ABCMeta):
     @abstractmethod
