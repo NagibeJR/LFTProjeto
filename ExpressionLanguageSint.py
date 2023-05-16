@@ -52,13 +52,13 @@ def p_programaFuncDeclPrograma(p):
     '''programa : funcdecl programa'''
     p[0] = sa.programaFuncDeclPrograma(p[1], p[2])
 
-def p_programaVarDecl(p):
-    '''programa : vardecl SEMICOLON'''
-    p[0] = sa.programaVarDecl(p[1])
+def p_programaComandos(p):
+    '''programa : comandos'''
+    p[0] = sa.programaComandos(p[1])
 
-def p_programaVarDeclPrograma(p):
-    '''programa : vardecl SEMICOLON programa'''
-    p[0] = sa.programaVarDeclPrograma(p[1], p[3])
+def p_programaComandosPrograma(p):
+    '''programa : comandos programa'''
+    p[0] = sa.programaComandosPrograma(p[1], p[3])
 
 def p_vardecl(p):
     '''vardecl : tipodecl ID COLON tipo'''
@@ -119,12 +119,8 @@ def p_comandos(p):
         p[0] = sa.CompoundComando(p[1], p[2])
 
 def p_comando(p):
-    '''comando : vardecl SEMICOLON
-           | RETURN expressao SEMICOLON'''
-    if len(p) == 3:
-        p[0] = sa.ComandoVarDecl(p[1])
-    else:
-        p[0] = sa.ComandoReturn(p[2])
+    '''comando :  RETURN expressao SEMICOLON'''
+    p[0] = sa.ComandoReturn(p[2])
 
 def p_comando1(p):
     '''comando : expressao SEMICOLON'''
@@ -253,6 +249,9 @@ def p_expressaoEEQ(p):
     '''expressao : expressao EEQ expressao'''
     p[0] = sa.ExpressaoEEQ(p[1], p[3])
 
+def p_expressaoVardecl(p):
+    '''expressao : vardecl'''
+    p[0] = sa.ExpressaoVarDecl(p[1])
 
 def p_expressaoNNEQ(p):
     '''expressao : expressao NNEQ expressao'''

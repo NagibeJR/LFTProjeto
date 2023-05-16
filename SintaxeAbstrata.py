@@ -23,20 +23,20 @@ class programaFuncDeclPrograma(programa):
     def accept(self, visitor):
         return visitor.visitProgramaFuncDeclPrograma(self)
     
-class programaVarDecl(programa):
-    def __init__(self, vardecl):
-        self.vardecl = vardecl
+class programaComandos(programa):
+    def __init__(self, comandos):
+        self.comandos = comandos
 
     def accept(self, visitor):
-        return visitor.visitProgramaVarDecl(self)
+        return visitor.visitProgramaComandos(self)
     
-class programaVarDeclPrograma(programa):
-    def __init__(self, vardecl, programa):
-        self.vardecl = vardecl
+class programaComandosPrograma(programa):
+    def __init__(self, comandos, programa):
+        self.comandos = comandos
         self.programa = programa
 
     def accept(self, visitor):
-        return visitor.visitProgramaVarDeclPrograma(self)
+        return visitor.visitProgramaComandosPrograma(self)
       
 #declaracao de variaveis
 
@@ -519,6 +519,13 @@ class ExpressaoFIM(expressao):
 
     def accept(self, visitor):
         return visitor.visitExpressaoFIM(self)
+
+class ExpressaoVarDecl(expressao):
+    def __init__(self, varDecl):
+        self.varDecl = varDecl
+
+    def accept(self, visitor):
+        return visitor.visitExpressaoVardecl(self)
 
 class Opexp(metaclass=ABCMeta):
     @abstractmethod

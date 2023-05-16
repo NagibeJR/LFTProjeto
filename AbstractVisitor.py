@@ -8,7 +8,7 @@ class AbstractVisitor(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def visitProgramaVarDecl(self, programa):
+    def visitProgramaComandos(self, programa):
         pass
 
     @abstractmethod
@@ -16,7 +16,7 @@ class AbstractVisitor(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def visitProgramaVarDeclProgram(self, programa):
+    def visitProgramaComandosProgram(self, programa):
         pass
 
     @abstractmethod
@@ -272,6 +272,10 @@ class AbstractVisitor(metaclass=ABCMeta):
     @abstractmethod
     def visitExpressaoFIM(self, ExpressaoFIM):
         pass
+
+    @abstractmethod
+    def visitExpressaoVarDecl(self, ExpressaoVarDecl):
+        pass  
 
     @abstractmethod
     def visitExpOpexp(self, ExpOpexp):
